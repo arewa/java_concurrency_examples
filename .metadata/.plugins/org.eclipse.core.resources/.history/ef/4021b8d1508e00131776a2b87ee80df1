@@ -1,0 +1,5 @@
+package com.droidbrew.javakoans.concurrency.c_modern;
+
+public class C_ConcurrentTotalFileSize {
+
+}

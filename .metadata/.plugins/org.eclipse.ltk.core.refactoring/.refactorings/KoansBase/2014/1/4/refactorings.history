@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;com.droidbrew.javakoans.eagkoans.base&apos; to &apos;com.droidbrew.javakoans.concurrency.base&apos;&#x0D;&#x0A;- Original project: &apos;KoansBase&apos;&#x0D;&#x0A;- Original element: &apos;KoansBase/src/com.droidbrew.javakoans.eagkoans.base&apos;&#x0D;&#x0A;- Renamed element: &apos;KoansBase/src/com.droidbrew.javakoans.concurrency.base&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;com.droidbrew.javakoans.eagkoans.base&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;com.droidbrew.javakoans.eagkoans.base" name="com.droidbrew.javakoans.concurrency.base" qualified="false" references="true" stamp="1390317939592" textual="false" version="1.0"/>
+</session>

@@ -1,0 +1,32 @@
+!SESSION 2014-03-06 11:46:52.008 -----------------------------------------------
+eclipse.buildId=M20120914-1800
+java.version=1.7.0_51
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product -data D:\Projects\JavaConcurrency-master -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.emf.ecore 2 0 2014-03-06 11:46:55.731
+!MESSAGE Both 'org.eclipse.m2e.model.edit' and 'org.eclipse.iam.pom.model' register a package for 'http://maven.apache.org/POM/4.0.0'
+
+!ENTRY org.eclipse.emf.ecore 2 0 2014-03-06 11:46:55.739
+!MESSAGE Both 'org.eclipse.m2e.model.edit' and 'org.eclipse.iam.pom.model' register an extension parser for 'pom'
+
+!ENTRY org.eclipse.ui 4 4 2014-03-06 11:47:02.234
+!MESSAGE Unable to find Action Set: org.eclipse.wb.core.ui.actionset
+!SESSION 2014-03-26 11:19:19.810 -----------------------------------------------
+eclipse.buildId=M20120914-1800
+java.version=1.7.0_51
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.emf.ecore 2 0 2014-03-26 11:19:25.363
+!MESSAGE Both 'org.eclipse.m2e.model.edit' and 'org.eclipse.iam.pom.model' register a package for 'http://maven.apache.org/POM/4.0.0'
+
+!ENTRY org.eclipse.emf.ecore 2 0 2014-03-26 11:19:25.415
+!MESSAGE Both 'org.eclipse.m2e.model.edit' and 'org.eclipse.iam.pom.model' register an extension parser for 'pom'
+
+!ENTRY org.eclipse.ui 4 4 2014-03-26 11:19:33.237
+!MESSAGE Unable to find Action Set: org.eclipse.wb.core.ui.actionset

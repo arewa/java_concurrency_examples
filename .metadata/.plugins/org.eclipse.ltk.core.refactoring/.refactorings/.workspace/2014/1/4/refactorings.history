@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename Java project &apos;JavaConcurrencyKoans&apos; to &apos;JavaConcurrencyFundamentalsKoans&apos;&#x0D;&#x0A;- Original element: &apos;JavaConcurrencyKoans&apos;&#x0D;&#x0A;- Renamed element: &apos;JavaConcurrencyKoans&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename Java project &apos;JavaConcurrencyKoans&apos;" flags="7" id="org.eclipse.jdt.ui.rename.java.project" input="=JavaConcurrencyKoans" name="JavaConcurrencyFundamentalsKoans" references="true" stamp="1390313578869" version="1.0"/>
+</session>

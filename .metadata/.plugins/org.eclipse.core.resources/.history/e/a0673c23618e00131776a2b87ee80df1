@@ -1,0 +1,44 @@
+package com.droidbrew.javakoans.concurrency.c_modern;
+
+import static com.droidbrew.javakoans.concurrency.base.Koan.___;
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.ExecutorService;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.concurrent.CountDownLatch;
+import java.util.Collections;
+import java.util.concurrent.ConcurrentHashMap;
+
+public class G_AccessingMap {
+  private static String useMap(final Map<String, Integer> scores) 
+    throws InterruptedException {
+	String result = "";
+    scores.put("Fred", 10);
+    scores.put("Sara", 12);
+    
+    try {
+      for(final String key : scores.keySet()) {
+        result += key + " score " + scores.get(key) + "\n";
+        scores.put("Joe", 14);        
+      }          
+    } catch(Exception ex) {
+      result += "Failed: " + ex + "\n";
+    }
+    
+    result += "Number of elements in the map: " + scores.keySet().size();
+    return result;
+  }
+
+  @Test
+  public void testConcurrentAccess() throws InterruptedException {
+    //assertEquals("Using Plain vanilla HashMap", ___, useMap(new HashMap<String, Integer>()));      
+
+    //assertEquals("Using Synchronized HashMap", ___, useMap(Collections.synchronizedMap(new HashMap<String, Integer>())));
+
+    assertEquals("Using Concurrent HashMap", ___, useMap(new ConcurrentHashMap<String, Integer>()));      
+  }
+}

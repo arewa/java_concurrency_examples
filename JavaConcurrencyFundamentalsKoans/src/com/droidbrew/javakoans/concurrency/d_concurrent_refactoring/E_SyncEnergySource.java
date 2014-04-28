@@ -1,0 +1,113 @@
+package com.droidbrew.javakoans.concurrency.d_concurrent_refactoring;
+
+import static org.junit.Assert.assertEquals;
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
+
+import org.junit.Test;
+
+public class E_SyncEnergySource {
+	private final long MAXLEVEL = 100;
+	private long level = MAXLEVEL;
+	private long replenish_counter = 0;
+	private static final ScheduledExecutorService replenishTimer =
+			Executors.newScheduledThreadPool(10,
+					new java.util.concurrent.ThreadFactory() {
+				public Thread newThread(Runnable runnable) {
+					Thread thread = new Thread(runnable);
+					thread.setDaemon(true);
+					return thread;
+				}
+			});
+	private ScheduledFuture<?> replenishTask;
+
+	// rafactoring: extract EnergySource out of unut test, make constuctor private
+	public E_SyncEnergySource() {}
+	
+	private void init() {
+		replenishTask = replenishTimer.scheduleAtFixedRate(new Runnable() {
+			public void run() { replenish(); }
+			}, 0, 1, TimeUnit.SECONDS);
+	}
+
+	public static E_SyncEnergySource create() {
+		final E_SyncEnergySource energySource = new E_SyncEnergySource();
+		energySource.init();
+		return energySource;
+	}
+
+
+	public synchronized long getUnitsAvailable() { return level; }
+
+	public synchronized boolean useEnergy(final long units) {
+		if (units > 0 && level >= units) {
+			level -= units;
+			return true;
+		}
+		return false;
+	}
+
+	public synchronized void stopEnergySource() { replenishTask.cancel(false); }  	// now this call in not mandatory before
+																		// JVM shutdown
+
+	private synchronized void replenish() {
+			replenish_counter++;		
+			if (level < MAXLEVEL) level++;
+	}
+	
+	public long getReplenish_counter() {
+		return replenish_counter;
+	}
+
+	@Test
+	public void testCorrectWork() throws InterruptedException{
+		long rest_of_units = 0;
+		long total_replenish_counter = 0;
+		int number_of_sources = 100;
+		final E_SyncEnergySource[] sources = new E_SyncEnergySource[number_of_sources];
+		for(int i=0; i<100; i++)
+			sources[i] = E_SyncEnergySource.create();
+		
+		for(final E_SyncEnergySource source : sources){
+
+		Thread[] threads = {new Thread(new Runnable() {	
+			@Override
+			public void run() {
+				for(int i=0; i<30; i++){
+					source.useEnergy(1);
+				}
+			}
+		}),
+		new Thread(new Runnable() {	
+			@Override
+			public void run() {
+				for(int i=0; i<30; i++){
+					source.useEnergy(1);
+				}
+			}
+		}),
+		new Thread(new Runnable() {	
+			@Override
+			public void run() {
+				for(int i=0; i<30; i++){
+					source.useEnergy(1);
+				}
+			}
+		})};
+		
+		for(Thread t : threads) t.start();
+		for(Thread t : threads) t.join();
+		
+		rest_of_units += source.getUnitsAvailable();
+		total_replenish_counter += source.getReplenish_counter();
+		}
+		
+		assertEquals(100, total_replenish_counter);
+		assertEquals(number_of_sources*10, rest_of_units);
+
+	}
+}
+
